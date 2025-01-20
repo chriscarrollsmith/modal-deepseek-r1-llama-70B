@@ -1,7 +1,7 @@
 [project]
-name = "llama-3-3-70b"
+name = "modal-deepseek-r1-llama-70b"
 version = "0.1.0"
-description = "Add your description here"
+description = "Deepseek R1 (LLama-70B distillation) Inference API Hosted on Modal.com"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

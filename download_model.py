@@ -1,22 +1,17 @@
-# ---
-# args: ["--force-download"]
-# ---
-
 import modal
 
-MODELS_DIR = "/llamas"
+MODELS_DIR = "/deepseeks"
+DEFAULT_NAME = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
+DEFAULT_REVISION = "07a264a567ba0863a4ab34fdb3c2b8a54e0bb494"
 
-DEFAULT_NAME = "meta-llama/Llama-3.3-70B-Instruct"
-DEFAULT_REVISION = "6f6073b423013f6a7d4d9f39144961bfbfbc386b"
-
-volume = modal.Volume.from_name("llamas", create_if_missing=True)
+volume = modal.Volume.from_name("deepseeks", create_if_missing=True)
 
 image = (
     modal.Image.debian_slim(python_version="3.12")
     .pip_install(
         [
-            "huggingface_hub",  # download models from the Hugging Face Hub
-            "hf-transfer",  # download models faster with Rust
+            "huggingface_hub",
+            "hf-transfer",
         ]
     )
     .env({"HF_HUB_ENABLE_HF_TRANSFER": "1"})
@@ -29,7 +24,7 @@ HOURS = 60 * MINUTES
 
 app = modal.App(
     image=image,
-    secrets=[  # add a Hugging Face Secret if you need to download a gated model
+    secrets=[
         modal.Secret.from_name("huggingface-secret", required_keys=["HF_TOKEN"])
     ]
 )
