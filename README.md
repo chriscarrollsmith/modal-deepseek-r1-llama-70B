@@ -1,5 +1,7 @@
 # Deepseek R1 (LLama-70B distillation) Inference API Hosted on Modal.com
 
+**Note: Modal now has good documentation on [running Deepseek R1 on their platform](https://modal.com/docs/examples/llama_cpp), which I recommend following as an alternative to this repo.**
+
 Deepseek R1 is a new DeepSeek reasoning model with benchmark performance similar to OpenAI's o1. While the full model is a very large mixture-of-experts model that requires many GPUs to run, this Llama-70B distillation is much smaller and can be run on two H100 GPUs, with only a small loss in benchmark performance.
 
 This repo is a full working implementation for spinning up a self-hosted inference API for this model on Modal.com. Modal gives you $30 per month in free credits (with additional credits available to startups and academics), and deploying and testing this app will use up about $1 of those credits. The rest can be used to play around with the model at no cost to you.
